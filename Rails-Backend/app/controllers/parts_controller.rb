@@ -1,6 +1,6 @@
 class PartsController < ApplicationController
 
     def index
-        render json: parts
+        render json: => Part.all
     end
 end
