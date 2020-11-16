@@ -1,10 +1,10 @@
 class PcsController < ApplicationController
 
     def index
-        render json: => Pc.all
+        render :json => Pc.all
     end
 
     def show
-        render json: pc
+        render :json pc
     end
 end
