@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Pc.create(name: "Cooler-Master-2020")
+
+Part.create(name: "RAM")
+Part.create(name: "GPU")
+Part.create(name: "CPU")
