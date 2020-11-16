@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Category.destroy_all
+Part.destroy_all
+Pc.destroy_all
+
 cpu = Category.create(name: "CPU")
 cpu_cooler = Category.create(name: "Cooler")
 motherboard = Category.create(name: "MOBO")
@@ -17,7 +21,7 @@ pca = Pc.create(name: "Cooler-Master-2020")
 pcb = Pc.create(name: "Thor-2013")
 pcc = Pc.create(name: "Qosmio-2007")
 
-cpu.parts.create!([{name: "AMD Ryzen"}, {name: "Intel Core"}])
+cpu.parts.create!([{name: "AMD Ryzen", pc_id: 1}, {name: "Intel Core"}])
 cpu_cooler.parts.create!([{name: "Noctua"}, {name: "Corsair"}, {name: "Cooler Master"}])
 motherboard.parts.create!([{name: "MSI"}, {name: "Asus"}, {name: "Gigabyte"}])
 ram.parts.create!([{name: "8gb"}, {name: "16gb"}, {name: "32gb"}])
