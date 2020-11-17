@@ -4,6 +4,7 @@ class Part {
         this.id = id
         this.name = name
         this.category = category
+        Part.all.push(this)
     }
     
 }

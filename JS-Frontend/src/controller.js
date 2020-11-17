@@ -37,20 +37,21 @@ class Controller {
     }
 
     bindEventListeners() {
+        let form = document.querySelector('#pcBuilder')
         document.querySelector('#partPicker').addEventListener('click', function() {
             console.log('Hello')
-            let toggleForm = document.querySelector('#pcBuilder')
-            if(toggleForm.style.display === 'none') {
-                toggleForm.style.display = 'block';
+            if(form.style.display === 'none') {
+                form.style.display = 'block';
             } else {
-                toggleForm.style.display = 'none';
+                form.style.display = 'none';
             }
             
         })
 
         document.querySelector('#pcBuilder').addEventListener('submit', (event) => {
             event.preventDefault()
-            console.log(event)
+            let data = event.target
+            debugger
             fetch(`${this.apiUrl}/parts`, {
                 method: 'POST',
                 headers: {
@@ -58,28 +59,31 @@ class Controller {
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({
-
-                })
-            })
+                    // name: data.querySelector("#cpu").value
+                })              
             .then(resp => resp.json())
             .then(data => {
                 console.log(data)
             })
             .catch(err => console.log(err))
-        })
+            })
+       })
+       form.reset
     }
-
-    // static renderForm() {
-    //     let revealForm = document.querySelector('#pcBuilder')
-    //     revealForm.style.display = block;
-    // }
 
     createANewPc() {
-        new Pc()
-    }
-
-    paintForm() {
-
+        fetch(`${this.apiUrl}/pcs`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'            
+            },
+            body: JSON.stringify()
+            })
+        .then(resp => resp.json())
+        .then(data => {
+            console.log(data)
+        })
     }
 
     // getPc() {
