@@ -1,7 +1,7 @@
 class PcsController < ApplicationController
 
     def index
-        render :json => Pc.all
+        render :json => Pc.all, :include => [:part]
     end
 
     def create
