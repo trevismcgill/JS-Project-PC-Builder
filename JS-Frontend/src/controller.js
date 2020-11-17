@@ -1,7 +1,7 @@
 class Controller {
-    pcs = []
-    parts = []
-    categories = []
+    // pcs = []
+    // parts = []
+    // categories = []
     apiUrl = "http://localhost:3000"
     getCategories() {
         fetch(`${this.apiUrl}/categories`)
