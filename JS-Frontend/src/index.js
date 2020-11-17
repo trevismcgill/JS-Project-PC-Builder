@@ -5,4 +5,5 @@ console.log(brain)
 
 brain.getCategories()
 brain.getParts()
+// console.log(Part.all)
 // brain.getPc()
