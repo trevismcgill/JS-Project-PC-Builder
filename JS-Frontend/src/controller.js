@@ -38,13 +38,21 @@ class Controller {
 
     bindEventListeners() {
         document.querySelector('#partPicker').addEventListener('click', function() {
-            console.log('Hello')})
-            // paintForm()
-}
-
-    renderForm() {
-        // let form = document.createElement('form')
+            console.log('Hello')
+            let toggleForm = document.querySelector('#pcBuilder')
+            if(toggleForm.style.display === 'none') {
+                toggleForm.style.display = 'block';
+            } else {
+                toggleForm.style.display = 'none';
+            }
+            
+        })
     }
+
+    // static renderForm() {
+    //     let revealForm = document.querySelector('#pcBuilder')
+    //     revealForm.style.display = block;
+    // }
 
     createANewPc() {
         new Pc()

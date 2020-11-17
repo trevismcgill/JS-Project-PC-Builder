@@ -13,7 +13,7 @@ pickle-email-*.html
 
 # Ignore all logfiles and tempfiles.
 Rails-Backend/log/*
-/tmp/*
+Rails-Backend/tmp/*
 !/log/.keep
 !/tmp/.keep
 
