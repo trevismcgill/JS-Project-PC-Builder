@@ -1,6 +1,6 @@
 
 const brain = new Controller
-
+brain.bindEventListeners()
 brain.getCategories()
 brain.getParts()
 

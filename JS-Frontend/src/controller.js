@@ -1,12 +1,14 @@
 class Controller {
     // pcs = []
     static parts = []
-    // categories = []
+    static categories = []
     apiUrl = "http://localhost:3000"
     getCategories() {
         fetch(`${this.apiUrl}/categories`)
         .then(resp => resp.json())
-        // .then(data => console.log(data))
+        .then(data => data.forEach(category => {
+            Controller.categories.push(new Category(category.name))
+        }))
         .catch(err => alert(err))
     }
 
@@ -32,6 +34,24 @@ class Controller {
         })
         let addParts = document.querySelector('#test1')
         addParts.appendChild(ul)
+    }
+
+    bindEventListeners() {
+        document.querySelector('#partPicker').addEventListener('click', function() {
+            console.log('Hello')})
+            // paintForm()
+}
+
+    renderForm() {
+        // let form = document.createElement('form')
+    }
+
+    createANewPc() {
+        new Pc()
+    }
+
+    paintForm() {
+
     }
 
     // getPc() {
