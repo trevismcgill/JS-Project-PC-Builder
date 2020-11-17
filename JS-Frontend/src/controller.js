@@ -47,6 +47,26 @@ class Controller {
             }
             
         })
+
+        document.querySelector('#pcBuilder').addEventListener('submit', (event) => {
+            event.preventDefault()
+            console.log(event)
+            fetch(`${this.apiUrl}/parts`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+
+                })
+            })
+            .then(resp => resp.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(err => console.log(err))
+        })
     }
 
     // static renderForm() {
@@ -68,4 +88,6 @@ class Controller {
     //     .then(resp => console.log(resp))
     //     .catch(err => alert(err))
     // }
+
+
 }
