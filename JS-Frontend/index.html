@@ -1,4 +1,4 @@
-<html lang="en">
+<!-- <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,5 +13,81 @@
     <script src='src/index.js'></script>
     <h1>PC Builder</h1>
     <select id="Category"></select>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<title>PC Builder</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-hdd-o,.fa-laptop {font-size:200px}
+</style>
+<body>
+
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-jumbo">PC Builder</h1>
+  <p class="w3-xlarge">By Trevdoggin'</p>
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>Pick your PC Parts</h1>
+      <h5 class="w3-padding-32"></h5>
+      <button id="partPicker">Start a new build!</button>
+      <form>
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname">
+      </form>
+        
+      <p class="w3-text-grey"></p>
+    </div>
+
+    <div class="w3-third w3-center">
+      <i class="fa fa-hdd-o w3-padding-64 w3-text-red"></i>
+    </div>
+  </div>
+</div>
+
+<!-- Second Grid -->
+<div id="test" class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      <i class="fa fa-laptop w3-padding-64 w3-text-red w3-margin-right"></i>
+    </div>
+
+    <div id="test1" class="w3-twothird">
+      <h1>See your build here:</h1>
+      
+    </div>
+  </div>
+</div>
+
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    <h1 class="w3-margin w3-xlarge">Thanks for building with us!</h1>
+</div>
+
+<!-- Footer -->
+<footer>
+</footer>
+
+<script src='src/part.js'></script>
+<script src='src/category.js'></script>
+<script src='src/pc.js'></script>
+<script src='src/controller.js'></script>
+<script src='src/index.js'></script>
+
 </body>
 </html>

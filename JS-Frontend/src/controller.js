@@ -30,7 +30,8 @@ class Controller {
             li.innerText = part.name
             ul.appendChild(li)
         })
-        document.body.appendChild(ul)
+        let addParts = document.querySelector('#test1')
+        addParts.appendChild(ul)
     }
 
     // getPc() {
