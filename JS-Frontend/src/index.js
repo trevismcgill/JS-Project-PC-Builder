@@ -1,7 +1,9 @@
 
 const brain = new Controller
 brain.bindEventListeners()
-brain.getParts()
+brain.getPcs()
+
+
 
 // console.log(Part.all)
 // brain.getPc()

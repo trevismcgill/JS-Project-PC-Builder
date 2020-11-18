@@ -1,25 +1,27 @@
 class Controller {
-    // pcs = []
-    static parts = []
-    static categories = []
+    
     apiUrl = "http://localhost:3000"
     
-    getParts() {
-        fetch(`${this.apiUrl}/parts`)
-        .then(resp => resp.json())
-        .then(data => {
-            data.forEach(part => {
-                Controller.parts.push(new Part(part.name, part.category.name))
-            })
-            this.renderParts()
-            })
-        .catch(err => alert(err))
+    getParts(pcObj) {
+        // fetch(`${this.apiUrl}/parts`)
+        // .then(resp => resp.json())
+        // .then(data => {
+        //     data.forEach(part => {
+        //         new Part(part.id, part.name, part.category)
+        //     })
+        //     this.renderParts()
+        //     })
+        // .catch(err => alert(err))
+        let pcParts = pcObj.parts
+        for(let partObj of pcParts) {
+            new Part(partObj)
+        }
     }
 
     renderParts() {
         let ul = document.createElement('ul')
         // debugger
-        Controller.parts.forEach(part => {
+        Part.all.forEach(part => {
             let li = document.createElement('li');
             li.innerText = part.name
             ul.appendChild(li)
@@ -27,6 +29,27 @@ class Controller {
         let addParts = document.querySelector('#test1')
         addParts.appendChild(ul)
     }
+
+    getPcs() {
+        fetch(`${this.apiUrl}/pcs`)
+            .then(resp => resp.json())
+            .then(data => {
+                for(let pcObj of data) {
+                    new Pc(pcObj)
+                    this.getParts(pcObj)
+                }
+                
+                console.log(Pc.all)
+            })
+            .catch(err => alert(err))
+        
+    }
+
+    renderPc() {
+        
+    }
+
+    
 
     bindEventListeners() {
         let form = document.querySelector('#pcBuilder')
@@ -42,8 +65,8 @@ class Controller {
 
         document.querySelector('#pcBuilder').addEventListener('submit', (event) => {
             event.preventDefault()
-            let data = event.target
-            debugger
+            // let data = event.target
+            // debugger
             fetch(`${this.apiUrl}/parts`, {
                 method: 'POST',
                 headers: {
@@ -72,18 +95,10 @@ class Controller {
             },
             body: JSON.stringify()
             })
-        .then(resp => resp.json())
+        .then(resp => console.log(resp.json()))
         .then(data => {
             console.log(data)
         })
     }
-
-    // getPc() {
-    //     fetch(`${this.apiUrl}/pc/`)
-    //     .then(resp => resp.json())
-    //     .then(resp => console.log(resp))
-    //     .catch(err => alert(err))
-    // }
-
 
 }

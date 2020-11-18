@@ -1,9 +1,9 @@
 class Part {
     static all = []
-    constructor(id, name, category) {
-        this.id = id
-        this.name = name
-        this.category = category
+    constructor(obj) {
+        this.id = obj.id
+        this.name = obj.name
+        this.category = obj.category
         Part.all.push(this)
     }
     

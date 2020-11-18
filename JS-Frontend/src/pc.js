@@ -1,8 +1,9 @@
 class Pc {
     static all = []
-    constructor(id, name) {
-        this.id = id
-        this.name = name
+    constructor(obj) {
+        this.id = obj.id
+        this.name = obj.name
+        this.parts = obj.parts
         Pc.all.push(this)
     }
 }
