@@ -23,6 +23,8 @@ class Controller {
             ul.appendChild(li)
         })
         let addParts = document.querySelector('#test1')
+        // debugger
+        addParts.innerHTML = `<h1>See your build here:</h1>`
         addParts.appendChild(ul)
     }
 
@@ -86,7 +88,10 @@ class Controller {
             })
         })
         .then(resp => resp.json())
-        .then(stuff => new Pc(stuff))
+        .then(newPcObj => {
+            new Pc(newPcObj)
+            this.renderPcParts(newPcObj)
+        })
     }
     
 
@@ -107,7 +112,7 @@ class Controller {
             event.preventDefault()
             let data = event.target
             this.createANewPc(data);
-        form.reset
+            form.reset();
         })
     }
 
