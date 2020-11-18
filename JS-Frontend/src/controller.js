@@ -99,7 +99,6 @@ class Controller {
     bindEventListeners() {
         let form = document.querySelector('#pcBuilder')
         document.querySelector('#partPicker').addEventListener('click', function() {
-            console.log('Hello')
             if(form.style.display === 'none') {
                 form.style.display = 'block';
             } else {
@@ -112,7 +111,9 @@ class Controller {
             event.preventDefault()
             let data = event.target
             this.createANewPc(data);
+            form.style.display = 'none';
             form.reset();
+            
         })
     }
 
