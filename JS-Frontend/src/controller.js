@@ -85,7 +85,8 @@ class Controller {
                 ]
             })
         })
-        .then(resp => resp.json)
+        .then(resp => resp.json())
+        .then(stuff => new Pc(stuff))
     }
     
 
