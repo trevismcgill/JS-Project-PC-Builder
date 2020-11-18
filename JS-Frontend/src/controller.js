@@ -55,7 +55,7 @@ class Controller {
             },
             body: JSON.stringify({
                 name: data.pcName.value,
-                parts: [
+                parts_attributes: [
                     {
                         name: data.cpu.value,
                         category: data.cpu.id

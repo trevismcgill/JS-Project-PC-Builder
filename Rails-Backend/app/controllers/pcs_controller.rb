@@ -5,8 +5,9 @@ class PcsController < ApplicationController
     end
 
     def create
-        pc = Pc.new
-        binding.pry
+        pc = Pc.create!(pc_params)
+        # binding.pry
+        render :json => Pc.find_by_id(pc.id), :include => [:parts]
     end
 
     def show
