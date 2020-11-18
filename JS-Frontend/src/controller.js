@@ -17,7 +17,7 @@ class Controller {
     renderPcParts(pcObj) {
         let ul = document.createElement('ul')
         let pcParts = pcObj.parts
-        debugger
+        // debugger
         pcParts.forEach(part => {
             let li = document.createElement('li');
             li.innerText = `${part.category} - ${part.name}`
@@ -39,7 +39,7 @@ class Controller {
                 // console.log(Pc.all)
             })
             .catch(err => alert(err))
-        console.log(Pc.all)
+        // console.log(Pc.all)
     }
 
     renderPc() {

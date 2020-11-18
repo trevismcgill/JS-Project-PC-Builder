@@ -3,8 +3,10 @@ const brain = new Controller
 
 brain.bindEventListeners()
 brain.getPcs()
-// brain.renderPcParts(Pc.all)
-console.log(Pc.all)
+setTimeout(() => {brain.renderPcParts(Pc.all[0])}, 500)
+
+
+// debugger
 
 
 
