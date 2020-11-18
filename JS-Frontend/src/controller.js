@@ -17,7 +17,6 @@ class Controller {
     renderPcParts(pcObj) {
         let ul = document.createElement('ul')
         let pcParts = pcObj.parts
-        // debugger
         pcParts.forEach(part => {
             let li = document.createElement('li');
             li.innerText = `${part.category} - ${part.name}`
@@ -46,8 +45,7 @@ class Controller {
     }
 
     createANewPc(data) {
-        debugger
-        fetch(`${this.apiUrl}/pcs`, {
+        return fetch(`${this.apiUrl}/pcs`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
@@ -87,10 +85,7 @@ class Controller {
                 ]
             })
         })
-        .then(resp => console.log(resp.json()))
-        .then(data => {
-            console.log(data)
-        })
+        .then(resp => resp.json)
     }
     
 
@@ -110,7 +105,6 @@ class Controller {
         document.querySelector('#pcBuilder').addEventListener('submit', (event) => {
             event.preventDefault()
             let data = event.target
-            // debugger
             this.createANewPc(data);
         form.reset
         })
