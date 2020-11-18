@@ -28,25 +28,72 @@ class Controller {
     }
 
     getPcs() {
-        fetch(`${this.apiUrl}/pcs`)
+        return fetch(`${this.apiUrl}/pcs`)
             .then(resp => resp.json())
             .then(data => {
                 for(let pcObj of data) {
                     new Pc(pcObj)
                     this.getParts(pcObj)
                 }
-                // this.renderPcParts(Pc.all[0])
-                // console.log(Pc.all)
+                return Pc.all
             })
             .catch(err => alert(err))
-        // console.log(Pc.all)
+        
     }
 
     renderPc() {
         
     }
 
+    createANewPc(data) {
+        debugger
+        fetch(`${this.apiUrl}/pcs`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'            
+            },
+            body: JSON.stringify({
+                name: data.pcName.value,
+                parts: [
+                    {
+                        name: data.cpu.value,
+                        category: data.cpu.id
+                    },
+                    {
+                        name: data.cooler.value,
+                        category: data.cooler.id
+                    },
+                    {
+                        name: data.motherboard.value,
+                        category: data.motherboard.id
+                    },
+                    {
+                        name: data.ram.value,
+                        category: data.ram.id
+                    },
+                    {
+                        name: data.storage.value,
+                        category: data.storage.id
+                    },
+                    {
+                        name: data.gpu.value,
+                        category: data.gpu.id
+                    },
+                    {
+                        name: data.psu.value,
+                        category: data.psu.id
+                    },
+                ]
+            })
+        })
+        .then(resp => console.log(resp.json()))
+        .then(data => {
+            console.log(data)
+        })
+    }
     
+
 
     bindEventListeners() {
         let form = document.querySelector('#pcBuilder')
@@ -62,40 +109,12 @@ class Controller {
 
         document.querySelector('#pcBuilder').addEventListener('submit', (event) => {
             event.preventDefault()
-            // let data = event.target
+            let data = event.target
             // debugger
-            fetch(`${this.apiUrl}/parts`, {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    // name: data.querySelector("#cpu").value
-                })              
-            .then(resp => resp.json())
-            .then(data => {
-                console.log(data)
-            })
-            .catch(err => console.log(err))
-            })
-       })
-       form.reset
-    }
-
-    createANewPc() {
-        fetch(`${this.apiUrl}/pcs`, {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json',
-                'Accept': 'application/json'            
-            },
-            body: JSON.stringify()
-            })
-        .then(resp => console.log(resp.json()))
-        .then(data => {
-            console.log(data)
+            this.createANewPc(data);
+        form.reset
         })
     }
 
+        
 }
