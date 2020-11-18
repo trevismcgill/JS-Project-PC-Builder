@@ -2,28 +2,25 @@ class Controller {
     
     apiUrl = "http://localhost:3000"
     
+    // paintDOM() {
+    //     this.getPcs()
+    // }
+
     getParts(pcObj) {
-        // fetch(`${this.apiUrl}/parts`)
-        // .then(resp => resp.json())
-        // .then(data => {
-        //     data.forEach(part => {
-        //         new Part(part.id, part.name, part.category)
-        //     })
-        //     this.renderParts()
-        //     })
-        // .catch(err => alert(err))
         let pcParts = pcObj.parts
         for(let partObj of pcParts) {
             new Part(partObj)
         }
+        // console.log(Part.all)
     }
 
-    renderParts() {
+    renderPcParts(pcObj) {
         let ul = document.createElement('ul')
-        // debugger
-        Part.all.forEach(part => {
+        let pcParts = pcObj.parts
+        debugger
+        pcParts.forEach(part => {
             let li = document.createElement('li');
-            li.innerText = part.name
+            li.innerText = `${part.category} - ${part.name}`
             ul.appendChild(li)
         })
         let addParts = document.querySelector('#test1')
@@ -38,8 +35,8 @@ class Controller {
                     new Pc(pcObj)
                     this.getParts(pcObj)
                 }
-                
-                console.log(Pc.all)
+                // this.renderPcParts(Pc.all[0])
+                // console.log(Pc.all)
             })
             .catch(err => alert(err))
         
