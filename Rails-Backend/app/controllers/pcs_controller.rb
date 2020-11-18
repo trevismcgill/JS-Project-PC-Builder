@@ -16,6 +16,6 @@ class PcsController < ApplicationController
     private
 
     def pc_params
-        params.require(:pc).permit(:id, :name)
+        params.require(:pc).permit(:id, :name, parts_attributes: [:id, :name, :category])
     end
 end
