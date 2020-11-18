@@ -1,9 +1,11 @@
 
 const brain = new Controller
+
 brain.bindEventListeners()
-// brain.paintDOM()
 brain.getPcs()
-brain.renderPcParts(Pc.all[0])
+// brain.renderPcParts(Pc.all)
+console.log(Pc.all)
+
 
 
 // console.log(Part.all)

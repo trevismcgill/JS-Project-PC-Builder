@@ -1,8 +1,8 @@
 class Controller {
-    
+    pcs = []
     apiUrl = "http://localhost:3000"
     
-    // paintDOM() {
+    // paintDom() {
     //     this.getPcs()
     // }
 
@@ -39,7 +39,7 @@ class Controller {
                 // console.log(Pc.all)
             })
             .catch(err => alert(err))
-        
+        console.log(Pc.all)
     }
 
     renderPc() {
