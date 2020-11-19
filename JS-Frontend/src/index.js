@@ -1,16 +1,13 @@
 
 const brain = new Controller
+const gopher = new Api
 
 brain.bindEventListeners()
-brain.getPcs()
+gopher.getPcs()
+mountSlideHandler()
 
 
 var slideIndex = 1;
-setTimeout(function(){showDivs(slideIndex)}, 500);
-
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
 
 function showDivs(n) {
   var i;
@@ -21,4 +18,13 @@ function showDivs(n) {
     x[i].style.display = "none";
   };
   x[slideIndex-1].style.display = "block";
-};
+
+}
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function mountSlideHandler() {
+  setTimeout(function(){showDivs(slideIndex)}, 500);
+}

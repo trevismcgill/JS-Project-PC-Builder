@@ -7,7 +7,7 @@ class Pc {
         Pc.all.push(this)
     }
 
-    createCards() {
+    createCard() {
         let cardSlot = document.querySelector("#footerArea")
         let div1 = document.createElement('div')
         div1.className = "mySlides"
