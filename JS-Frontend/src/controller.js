@@ -24,7 +24,7 @@ class Controller {
         })
         let addParts = document.querySelector('#test1')
         // debugger
-        addParts.innerHTML = `<h1>See your build here:</h1>`
+        addParts.innerHTML = '<h1>See your build here:</h1>'
         addParts.appendChild(ul)
     }
 
@@ -33,8 +33,9 @@ class Controller {
             .then(resp => resp.json())
             .then(data => {
                 for(let pcObj of data) {
-                    new Pc(pcObj)
+                    let pc = new Pc(pcObj)
                     this.getParts(pcObj)
+                    pc.createCards()
                 }
                 return Pc.all
             })
@@ -89,8 +90,10 @@ class Controller {
         })
         .then(resp => resp.json())
         .then(newPcObj => {
-            new Pc(newPcObj)
+            let pc = new Pc(newPcObj)
             this.renderPcParts(newPcObj)
+            pc.createCards();
+            plusDivs(0);
         })
     }
     
