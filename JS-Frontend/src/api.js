@@ -59,7 +59,7 @@ class Api {
         .then(resp => resp.json())
         .then(newPcObj => {
             let pc = new Pc(newPcObj)
-            brain.renderPcParts(newPcObj)
+            renderPcParts(newPcObj)
             createCard(pc);
             plusDivs(0);
         })
@@ -75,7 +75,13 @@ class Api {
             body: JSON.stringify(pcObj)   
         })
         .then(resp => resp.json())
-        .then(deletedPc => console.log(deletedPc))
+        .then(deletedPc => {
+           const pcLeftovers = Pc.all.filter((pc) => {
+                return pc.id !== deletedPc.id
+            })
+            Pc.all = pcLeftovers
+        })
+        
     }   
 
 }

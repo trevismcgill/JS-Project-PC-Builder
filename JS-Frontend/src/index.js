@@ -88,7 +88,6 @@ function createCard(pcObj) {
   btn.innerText = "DELETE"
 
   btn.addEventListener('click', () => {
-      debugger
       gopher.deletePc(pcObj);
       document.querySelector(`#pcCard-${pcObj.id}`).remove();
   })
@@ -100,6 +99,19 @@ function createCard(pcObj) {
   cardSlot.appendChild(div1)
 
   showDivs(1)
+}
+
+function renderPcParts(pcObj) {
+  let ul = document.createElement('ul')
+  let pcParts = pcObj.parts
+  pcParts.forEach(part => {
+      let li = document.createElement('li');
+      li.innerText = `${part.category} - ${part.name}`
+      ul.appendChild(li)
+  })
+  let addParts = document.querySelector('#test1')
+  addParts.innerHTML = '<h1>See your build here:</h1>'
+  addParts.appendChild(ul)
 }
 
 
