@@ -10,8 +10,11 @@ class PcsController < ApplicationController
         render :json => Pc.find_by_id(pc.id), :include => [:parts]
     end
 
-    def show
-        # render :json pc
+    def destroy
+        binding.pry
+        pc = Pc.find_by_id(pc_params.id)
+        render :json => pc
+        pc.destroy
     end
 
     private
