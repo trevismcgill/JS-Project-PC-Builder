@@ -9,7 +9,7 @@ class Api {
             .then(data => {
                 for(let pcObj of data) {
                     let pc = new Pc(pcObj)
-                    Controller.getParts(pcObj)
+                    brain.getParts(pcObj)
                     pc.createCard()
                 }
             })
@@ -61,22 +61,23 @@ class Api {
         .then(resp => resp.json())
         .then(newPcObj => {
             let pc = new Pc(newPcObj)
-            Controller.renderPcParts(newPcObj)
+            brain.renderPcParts(newPcObj)
             pc.createCard();
             plusDivs(0);
         })
     }
 
     deletePc(pcObj) {
-        return fetch(`${this.apiUrl}/pc/${pcObj.id}`, {
+        return fetch(`${this.apiUrl}/pcs/${pcObj.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json',
-                'Accept': 'application/json'            
+                'Accept': 'application/json'  
             },
-            body: JSON.stringify({})
-    })
-    .then(resp => resp.json())
-    .then(data => console.log(data))
+            body: JSON.stringify(pcObj)   
+        })
+        .then(resp => resp.json())
+        .then(deletedPc => console.log(data))
+    }   
 
 }

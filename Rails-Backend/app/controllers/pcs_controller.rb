@@ -11,8 +11,8 @@ class PcsController < ApplicationController
     end
 
     def destroy
-        binding.pry
-        pc = Pc.find_by_id(pc_params.id)
+        # binding.pry
+        pc = Pc.find_by_id(pc_params[:id])
         render :json => pc
         pc.destroy
     end

@@ -2,14 +2,14 @@ class Controller {
     pcs = []
     
 
-    static getParts(pcObj) {
+    getParts(pcObj) {
         let pcParts = pcObj.parts
         for(let partObj of pcParts) {
             new Part(partObj)
         }
     }
 
-    static renderPcParts(pcObj) {
+    renderPcParts(pcObj) {
         let ul = document.createElement('ul')
         let pcParts = pcObj.parts
         pcParts.forEach(part => {
@@ -24,7 +24,7 @@ class Controller {
 
     bindEventListeners() {
         let form = document.querySelector('#pcBuilder')
-        document.querySelector('#partPicker').addEventListener('click', function() {
+        document.querySelector('#partPicker').addEventListener('click', () => {
             if(form.style.display === 'none') {
                 form.style.display = 'block';
             } else {
@@ -42,6 +42,7 @@ class Controller {
             form.reset();
             
         })
+
     }
 
         

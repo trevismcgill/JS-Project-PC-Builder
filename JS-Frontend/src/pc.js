@@ -11,6 +11,7 @@ class Pc {
         let cardSlot = document.querySelector("#footerArea")
         let div1 = document.createElement('div')
         div1.className = "mySlides"
+        div1.id = `pcCard-${this.id}`
         // div1.style.display = "none"
         let div2 = document.createElement('div')
         div2.className = "w3-container w3-grey"
@@ -22,6 +23,17 @@ class Pc {
             li.innerText = `${part.category} - ${part.name}`
             ul.appendChild(li)
         })
+        let btn = document.createElement("button")
+        btn.id = `delete-${this.id}`
+        btn.innerText = "DELETE"
+
+        btn.addEventListener('click', () => {
+            debugger
+            gopher.deletePc(this);
+            document.querySelector(`#pcCard-${this.id}`).remove();
+        })
+
+        ul.appendChild(btn)
         div2.appendChild(h1)
         div2.appendChild(ul)
         div1.appendChild(div2)
