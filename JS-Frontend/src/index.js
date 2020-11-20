@@ -16,6 +16,15 @@ function bindEventListeners() {
   form.addEventListener('submit', submitCreatePcBuilderForm)
 }
 
+function intializePcCards() {
+  gopher.getPcs()
+  .then((pcs) => {
+    pcs.forEach(pc => {
+      createCard(pc);
+    })
+  })
+}
+
 function toggleCreatePcBuilderForm() {
   const form = document.querySelector('#pcBuilder')
   form.classList.toggle("visually-hidden")
@@ -28,43 +37,6 @@ function submitCreatePcBuilderForm(event) {
     gopher.createANewPc(data);
     form.classList.toggle("visually-hidden");
     form.reset();
-}
-
-
-
-
-
-
-
-
-
-
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  // debugger
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length};
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  };
-  x[slideIndex-1].style.display = "block";
-
-}
-
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function intializePcCards() {
-  gopher.getPcs()
-  .then((pcs) => {
-    pcs.forEach(pc => {
-      createCard(pc);
-    })
-  })
-  // .then(showDivs(slideIndex));
 }
 
 function createCard(pcObj) {
@@ -113,6 +85,29 @@ function renderPcParts(pcObj) {
   addParts.innerHTML = '<h1>See your build here:</h1>'
   addParts.appendChild(ul)
 }
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  // debugger
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length};
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  };
+  x[slideIndex-1].style.display = "block";
+
+}
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+
+
+
+
+
 
 
 
