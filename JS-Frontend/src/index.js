@@ -1,5 +1,4 @@
 
-const brain = new Controller
 const gopher = new Api
 
 var slideIndex = 1;
