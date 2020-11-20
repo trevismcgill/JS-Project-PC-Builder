@@ -9,12 +9,10 @@ class Api {
             .then(data => {
                 for(let pcObj of data) {
                     let pc = new Pc(pcObj)
-                    brain.getParts(pcObj)
-                    pc.createCard()
                 }
+                return Pc.all
             })
             .catch(err => alert(err))
-        
     }
 
     createANewPc(data) {
@@ -62,7 +60,7 @@ class Api {
         .then(newPcObj => {
             let pc = new Pc(newPcObj)
             brain.renderPcParts(newPcObj)
-            pc.createCard();
+            createCard(pc);
             plusDivs(0);
         })
     }
@@ -77,7 +75,7 @@ class Api {
             body: JSON.stringify(pcObj)   
         })
         .then(resp => resp.json())
-        .then(deletedPc => console.log(data))
+        .then(deletedPc => console.log(deletedPc))
     }   
 
 }

@@ -2,12 +2,12 @@ class Controller {
     pcs = []
     
 
-    getParts(pcObj) {
-        let pcParts = pcObj.parts
-        for(let partObj of pcParts) {
-            new Part(partObj)
-        }
-    }
+    // getParts(pcObj) {
+    //     let pcParts = pcObj.parts
+    //     for(let partObj of pcParts) {
+    //         new Part(partObj)
+    //     }
+    // }
 
     renderPcParts(pcObj) {
         let ul = document.createElement('ul')
@@ -22,28 +22,7 @@ class Controller {
         addParts.appendChild(ul)
     }
 
-    bindEventListeners() {
-        let form = document.querySelector('#pcBuilder')
-        document.querySelector('#partPicker').addEventListener('click', () => {
-            if(form.style.display === 'none') {
-                form.style.display = 'block';
-            } else {
-                form.style.display = 'none';
-            }
-            
-        })
-
-        document.querySelector('#pcBuilder').addEventListener('submit', (event) => {
-            event.preventDefault()
-            let data = event.target
-            // debugger
-            gopher.createANewPc(data);
-            form.style.display = 'none';
-            form.reset();
-            
-        })
-
-    }
+    
 
         
 }
