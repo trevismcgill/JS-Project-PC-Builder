@@ -79,7 +79,7 @@ function createCard(pcObj) {
   const ul = document.createElement('ul')
   ul.style.listStyle = 'none';
   pcObj.parts.forEach(part => {
-      const li = document.createElement('li');
+      let li = document.createElement('li');
       li.innerText = `${part.category} - ${part.name}`
       ul.appendChild(li)
   })
