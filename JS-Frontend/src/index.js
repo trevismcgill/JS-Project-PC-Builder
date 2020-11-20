@@ -15,13 +15,19 @@ function bindEventListeners() {
   form.addEventListener('submit', submitCreatePcBuilderForm)
 }
 
-function intializePcCards() {
-  gopher.getPcs()
-  .then((pcs) => {
-    pcs.forEach(pc => {
-      createCard(pc);
-    })
-  })
+// function intializePcCards() {
+//   gopher.getPcs()
+//   .then((pcs) => {
+//     pcs.forEach(pc => {
+//       createCard(pc);
+//     })
+//   })
+// }
+
+
+async function intializePcCards() {
+  const pcs = await gopher.getPcs()
+    pcs.forEach(pc => {createCard(pc);})
 }
 
 function toggleCreatePcBuilderForm() {
@@ -101,6 +107,39 @@ function plusDivs(n) {
   showDivs(slideIndex += n);
 }
 
+// setTimeout(() => {
+  
+// }, timeout);
+
+// const newPromise = new Promise((resolve) => {
+//   console.log('Promise started - Async code started')
+//     setTimeout(() => {resolve("RESOLVED")}, Math.random() * (5 - 10) + 1000);
+//   });
+
+// function testPromiseThen() {
+//   console.log('Started - Sync code started');
+
+//   newPromise.then(() => {
+//     console.log('Promise fulfilled - Async code terminated');
+//   })
+
+//   console.log('Promise made - Sync code terminated');
+// }
+
+// async function testPromiseAwait(promise) {
+  
+//   console.log('Started - Sync code started');
+
+//   await promise;
+  
+//   console.log('Promise made - Sync code terminated');
+// }
+
+// testPromiseAwait(newPromise);
+
+
+
+// testPromiseThen();
 
 
 
