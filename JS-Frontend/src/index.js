@@ -1,8 +1,7 @@
 
-const brain = new Controller
 const gopher = new Api
 
-var slideIndex = 1;
+let slideIndex = 1;
 window.addEventListener("load", () => {
   bindEventListeners();
   intializePcCards();
@@ -14,6 +13,21 @@ function bindEventListeners() {
   formToggleBtn.addEventListener('click', toggleCreatePcBuilderForm)
 
   form.addEventListener('submit', submitCreatePcBuilderForm)
+}
+
+// function intializePcCards() {
+//   gopher.getPcs()
+//   .then((pcs) => {
+//     pcs.forEach(pc => {
+//       createCard(pc);
+//     })
+//   })
+// }
+
+
+async function intializePcCards() {
+  const pcs = await gopher.getPcs()
+    pcs.forEach(pc => {createCard(pc);})
 }
 
 function toggleCreatePcBuilderForm() {
@@ -28,43 +42,6 @@ function submitCreatePcBuilderForm(event) {
     gopher.createANewPc(data);
     form.classList.toggle("visually-hidden");
     form.reset();
-}
-
-
-
-
-
-
-
-
-
-
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  // debugger
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length};
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  };
-  x[slideIndex-1].style.display = "block";
-
-}
-
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function intializePcCards() {
-  gopher.getPcs()
-  .then((pcs) => {
-    pcs.forEach(pc => {
-      createCard(pc);
-    })
-  })
-  // .then(showDivs(slideIndex));
 }
 
 function createCard(pcObj) {
@@ -88,7 +65,6 @@ function createCard(pcObj) {
   btn.innerText = "DELETE"
 
   btn.addEventListener('click', () => {
-      debugger
       gopher.deletePc(pcObj);
       document.querySelector(`#pcCard-${pcObj.id}`).remove();
   })
@@ -101,6 +77,40 @@ function createCard(pcObj) {
 
   showDivs(1)
 }
+
+function renderPcParts(pcObj) {
+  let ul = document.createElement('ul')
+  let pcParts = pcObj.parts
+  pcParts.forEach(part => {
+      let li = document.createElement('li');
+      li.innerText = `${part.category} - ${part.name}`
+      ul.appendChild(li)
+  })
+  let addParts = document.querySelector('#test1')
+  addParts.innerHTML = '<h1>See your build here:</h1>'
+  addParts.appendChild(ul)
+}
+
+function showDivs(n) {
+  let i;
+  const x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length};
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  };
+  x[slideIndex-1].style.display = "block";
+
+}
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+
+
+
+
 
 
 
