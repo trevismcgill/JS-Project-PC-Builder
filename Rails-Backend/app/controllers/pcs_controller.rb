@@ -7,7 +7,7 @@ class PcsController < ApplicationController
     def create
         pc = Pc.create!(pc_params)
         # binding.pry
-        render :json => Pc.find_by_id(pc.id), :include => [:parts]
+        render :json => pc, :include => [:parts]
     end
 
     def destroy

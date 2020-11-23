@@ -62,7 +62,6 @@ class Api {
         .then(newPcObj => {
             let pc = new Pc(newPcObj)
             renderPcParts(newPcObj)
-            createCard(pc);
             plusDivs(0);
         })
     }

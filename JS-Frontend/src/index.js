@@ -2,11 +2,13 @@
 const gopher = new Api
 
 let slideIndex = 1;
+
 window.addEventListener("load", () => {
   bindEventListeners();
-  intializePcCards();
+  gopher.getPcs();
 });
 
+//Mounts Listeners to Existing HTML
 function bindEventListeners() {
   const form = document.querySelector('#pcBuilder')
   const formToggleBtn = document.querySelector('#partPicker')
@@ -15,20 +17,21 @@ function bindEventListeners() {
   form.addEventListener('submit', submitCreatePcBuilderForm)
 }
 
-function intializePcCards() {
-  gopher.getPcs()
-  .then((pcs) => {
-    pcs.forEach(pc => {
-      createCard(pc);
-    })
-  })
-}
+//Fires off GET fetch then constructs pc cards
+// function intializePcCards() {
+//   gopher.getPcs()
+//   // .then((pcs) => {
+//   //   pcs.forEach(pc => {
+//   //     createCard(pc);
+//   //   })
+//   // })
+// }
 
 //Fires so that other functions have HTML to manipulate
-async function intializePcCards() {
-  const pcs = await gopher.getPcs()
-    pcs.forEach(pc => {createCard(pc);})
-}
+// function intializePcCards() {
+//   gopher.getPcs()
+    // pcs.forEach(pc => {createCard(pc);})
+// }
 
 //Button and Form Toggle
 function toggleCreatePcBuilderForm() {
@@ -46,44 +49,44 @@ function submitCreatePcBuilderForm(event) {
     form.reset();
 }
 
-function createCard(pcObj) {
-  //Builds the HTML for the Pc Cards
-  const cardSlot = document.querySelector("#footerArea")
-  const div1 = document.createElement('div')
-  div1.className = "mySlides"
-  div1.id = `pcCard-${pcObj.id}`
-  const div2 = document.createElement('div')
-  div2.className = "w3-container w3-grey"
-  const h1 = document.createElement('h1')
-  h1.innerHTML = `<b>${pcObj.name}</b>`
-  const ul = document.createElement('ul')
-  ul.style.listStyle = 'none';
-  pcObj.parts.forEach(part => {
-      let li = document.createElement('li');
-      li.innerText = `${part.category} - ${part.name}`
-      ul.appendChild(li)
-  })
-  const btn = document.createElement("button")
-  btn.id = `delete-${pcObj.id}`
-  btn.innerText = "DELETE"
+// function createCard(pcObj) {
+//   //Builds the HTML for the Pc Cards
+//   const cardSlot = document.querySelector("#footerArea")
+//   const div1 = document.createElement('div')
+//   div1.className = "mySlides"
+//   div1.id = `pcCard-${pcObj.id}`
+//   const div2 = document.createElement('div')
+//   div2.className = "w3-container w3-grey"
+//   const h1 = document.createElement('h1')
+//   h1.innerHTML = `<b>${pcObj.name}</b>`
+//   const ul = document.createElement('ul')
+//   ul.style.listStyle = 'none';
+//   pcObj.parts.forEach(part => {
+//       let li = document.createElement('li');
+//       li.innerText = `${part.category} - ${part.name}`
+//       ul.appendChild(li)
+//   })
+//   const btn = document.createElement("button")
+//   btn.id = `delete-${pcObj.id}`
+//   btn.innerText = "DELETE"
 
-  // This feature should moved to it's own function
-  btn.addEventListener('click', () => {
-      gopher.deletePc(pcObj);
-      document.querySelector(`#pcCard-${pcObj.id}`).remove();
-      plusDivs(0)
-  })
+//   // This feature should moved to it's own function
+//   btn.addEventListener('click', () => {
+//       gopher.deletePc(pcObj);
+//       document.querySelector(`#pcCard-${pcObj.id}`).remove();
+//       plusDivs(0)
+//   })
   
   //Pieces the HTML Elements together
 
-  ul.appendChild(btn)
-  div2.appendChild(h1)
-  div2.appendChild(ul)
-  div1.appendChild(div2)
-  cardSlot.appendChild(div1)
+//   ul.appendChild(btn)
+//   div2.appendChild(h1)
+//   div2.appendChild(ul)
+//   div1.appendChild(div2)
+//   cardSlot.appendChild(div1)
 
-  showDivs(1)
-}
+//   showDivs(1)
+// }
 
 // Produces the Parts list in the second section
 function renderPcParts(pcObj) {
