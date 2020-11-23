@@ -15,26 +15,28 @@ function bindEventListeners() {
   form.addEventListener('submit', submitCreatePcBuilderForm)
 }
 
-// function intializePcCards() {
-//   gopher.getPcs()
-//   .then((pcs) => {
-//     pcs.forEach(pc => {
-//       createCard(pc);
-//     })
-//   })
-// }
+function intializePcCards() {
+  gopher.getPcs()
+  .then((pcs) => {
+    pcs.forEach(pc => {
+      createCard(pc);
+    })
+  })
+}
 
-
+//Fires so that other functions have HTML to manipulate
 async function intializePcCards() {
   const pcs = await gopher.getPcs()
     pcs.forEach(pc => {createCard(pc);})
 }
 
+//Button and Form Toggle
 function toggleCreatePcBuilderForm() {
   const form = document.querySelector('#pcBuilder')
   form.classList.toggle("visually-hidden")
 }
 
+//Grabs the form and uses the data to create a PC Obj
 function submitCreatePcBuilderForm(event) {
     event.preventDefault()
     const form = document.querySelector('#pcBuilder')
@@ -45,6 +47,7 @@ function submitCreatePcBuilderForm(event) {
 }
 
 function createCard(pcObj) {
+  //Builds the HTML for the Pc Cards
   const cardSlot = document.querySelector("#footerArea")
   const div1 = document.createElement('div')
   div1.className = "mySlides"
@@ -64,10 +67,14 @@ function createCard(pcObj) {
   btn.id = `delete-${pcObj.id}`
   btn.innerText = "DELETE"
 
+  // This feature should moved to it's own function
   btn.addEventListener('click', () => {
       gopher.deletePc(pcObj);
       document.querySelector(`#pcCard-${pcObj.id}`).remove();
+      plusDivs(0)
   })
+  
+  //Pieces the HTML Elements together
 
   ul.appendChild(btn)
   div2.appendChild(h1)
@@ -78,6 +85,7 @@ function createCard(pcObj) {
   showDivs(1)
 }
 
+// Produces the Parts list in the second section
 function renderPcParts(pcObj) {
   let ul = document.createElement('ul')
   let pcParts = pcObj.parts
@@ -91,6 +99,7 @@ function renderPcParts(pcObj) {
   addParts.appendChild(ul)
 }
 
+// Functionality for the button cards at the bottom
 function showDivs(n) {
   let i;
   const x = document.getElementsByClassName("mySlides");
@@ -103,6 +112,7 @@ function showDivs(n) {
 
 }
 
+//Cycles the cards
 function plusDivs(n) {
   showDivs(slideIndex += n);
 }

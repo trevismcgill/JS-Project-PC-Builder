@@ -3,6 +3,7 @@ class Api {
 
     apiUrl = "http://localhost:3000"
 
+    //GET AJAX
     getPcs() {
         return fetch(`${this.apiUrl}/pcs`)
             .then(resp => resp.json())
@@ -15,6 +16,7 @@ class Api {
             .catch(err => alert(err))
     }
 
+    //POST AJAX
     createANewPc(data) {
         return fetch(`${this.apiUrl}/pcs`, {
             method: 'POST',
@@ -65,6 +67,7 @@ class Api {
         })
     }
 
+    //DELETE AJAX
     deletePc(pcObj) {
         return fetch(`${this.apiUrl}/pcs/${pcObj.id}`, {
             method: 'DELETE',
