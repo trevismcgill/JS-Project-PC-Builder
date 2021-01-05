@@ -1,4 +1,4 @@
-# JS-Project-PC-Builder
+# PC Builder
 SPA to make a list of parts for a custom pc build
 
 To get started you'll need to do a few things.
